@@ -152,14 +152,14 @@ if __name__ == "__main__":
     # data_list = ["ace2004", "msnbc", "aquaint", "clueweb", "wiki", "aida_train", "aida_testA", "aida_testB"]
 
     data_type = "aida_train"
-    candidate_path = "/root/fangzheng/data/candidate/" + data_type + "_candidate"
-    candidate_redirect_path = "/root/fangzheng/data/golden_redirect/" + data_type + "_golden_redirect"
+    candidate_path = "/root/data/candidate/" + data_type + "_candidate"
+    candidate_redirect_path = "/root/data/golden_redirect/" + data_type + "_golden_redirect"
     # redirect_crawl.crawl_golden_redirect(candidate_path, candidate_redirect_path)
 
-    filter_candidate_path = "/root/fangzheng/data/filter_candidate/" + data_type + "_filter_candidate"
-    filter_candidate_redirect_path = "/root/fangzheng/data/candidate_redirect/" + data_type + "_candidate_redirect"
+    filter_candidate_path = "/root/data/filter_candidate/" + data_type + "_filter_candidate"
+    filter_candidate_redirect_path = "/root/data/candidate_redirect/" + data_type + "_candidate_redirect"
     redirect_crawl.crawl_candidate_redirect(filter_candidate_path, filter_candidate_redirect_path)
 
-    name_path = "/root/fangzheng/data/filter_candidate/" + data_type + "_filter_candidate_no_wiki"
-    filter_candidate_redirect_path = "/root/fangzheng/data/candidate_redirect/" + data_type + "_candidate_redirect"
+    name_path = "/root/data/filter_candidate/" + data_type + "_filter_candidate_no_wiki"
+    filter_candidate_redirect_path = "/root/data/candidate_redirect/" + data_type + "_candidate_redirect"
     # redirect_crawl.crawl_name_redirect(name_path, filter_candidate_redirect_path)

@@ -2,7 +2,7 @@
 
 
 # embedding
-source_dir = "/data/fangzheng/bert_el/"
+source_dir = "/data/bert_el/"
 
 word_embed_path = source_dir + "embedding/word_embeddings.npy"
 

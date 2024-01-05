@@ -243,35 +243,35 @@ class ProcessBert(object):
 
     def control_source_bert(self):
         data_name = "ace2004"
-        cut_candidate_path = "/home1/fangzheng/data/bert_el_data/" + data_name + "/generate/" + data_name + "_cut_rank_format"
+        cut_candidate_path = "/home1/xxx/data/bert_el_data/" + data_name + "/generate/" + data_name + "_cut_rank_format"
 
-        cut_candidate_path = "/home1/fangzheng/data/bert_el_data/aida_train/generate/aida_train_cut_rank_format_small"
-        bert_path = "/home1/fangzheng/data/bert_el_data/aida_train/bert/aida_train_cut_rank_format_small"
-        mention_vec_path = "/home1/fangzheng/data/bert_el_data/aida_train/bert/aida_train_small_mention_sent_features"
-        entity_vec_path = "/home1/fangzheng/data/bert_el_data/aida_train/bert/aida_train_small_entity_sent_features"
+        cut_candidate_path = "/home1/xxx/data/bert_el_data/aida_train/generate/aida_train_cut_rank_format_small"
+        bert_path = "/home1/xxx/data/bert_el_data/aida_train/bert/aida_train_cut_rank_format_small"
+        mention_vec_path = "/home1/xxx/data/bert_el_data/aida_train/bert/aida_train_small_mention_sent_features"
+        entity_vec_path = "/home1/xxx/data/bert_el_data/aida_train/bert/aida_train_small_entity_sent_features"
         bert_process.build_sent(cut_candidate_path, bert_path)
 
-        mention_vec_path = "/home1/fangzheng/data/bert_el_data/" + data_name + "/bert/" + "mention_sent_features"
-        entity_vec_path = "/home1/fangzheng/data/bert_el_data/" + data_name + "/bert/" + "entity_sent_features"
+        mention_vec_path = "/home1/xxx/data/bert_el_data/" + data_name + "/bert/" + "mention_sent_features"
+        entity_vec_path = "/home1/xxx/data/bert_el_data/" + data_name + "/bert/" + "entity_sent_features"
         bert_process.map_sent_vector(cut_candidate_path, mention_vec_path, entity_vec_path)
 
     def control_fine_tuning(self):
         data_name = "kore50"
-        cut_rank_path = "/home1/fangzheng/data/bert_el_data/" + data_name + "/candidate/" + data_name + "_cut_rank_format"
+        cut_rank_path = "/home1/xxx/data/bert_el_data/" + data_name + "/candidate/" + data_name + "_cut_rank_format"
         print(data_name)
 
-        bert_fine_tuning_data_path = "/home1/fangzheng/data/bert_el_data/" + data_name + "/bert/" + data_name + "_bert_data"
+        bert_fine_tuning_data_path = "/home1/xxx/data/bert_el_data/" + data_name + "/bert/" + data_name + "_bert_data"
         bert_process.fine_tuning_bert_data(cut_rank_path, bert_fine_tuning_data_path)
 
-        bert_fine_tuning_vec_path = "/home1/fangzheng/project/bert/predict_bs2/" + data_name + "_merged"
-        cut_rank_bert_vec_path = "/home1/fangzheng/data/bert_el_data/" + data_name + "/bert/" + data_name + "_cut_rank_bert_vec"
+        bert_fine_tuning_vec_path = "/home1/xxx/project/bert/predict_bs2/" + data_name + "_merged"
+        cut_rank_bert_vec_path = "/home1/xxx/data/bert_el_data/" + data_name + "/bert/" + data_name + "_cut_rank_bert_vec"
         bert_process.map_fine_tuning_vec2data(cut_rank_path, bert_fine_tuning_vec_path, cut_rank_bert_vec_path)
 
 if __name__ == "__main__":
     bert_process = ProcessBert()
 
-    source_dir = "/data/fangzheng/bert_el/"
-    bert_source_dir = "/data/fangzheng/bert/"
+    source_dir = "/data/xxx/bert_el/"
+    bert_source_dir = "/data/xxx/bert/"
     name_list = ["aida_testB"]
     # name_list = ["msnbc", "ace2004", "aquaint", "rss500", "reuters128", "kore50", "aida_testA", "aida_testB"]
     for data_name in name_list:

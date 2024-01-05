@@ -168,7 +168,7 @@ if __name__ == "__main__":
     generate_result = GenerateOwnResult()
 
     data_name = "reuters128"
-    source_dir = "/data/fangzheng/bert_el/"
+    source_dir = "/data/xxx/bert_el/"
     combine_model_result_path = source_dir + data_name + "/bert/" + data_name + "_cut_rank_format_bert_predict"
     xgboost_pred_path = source_dir + data_name + "/candidate/" + data_name + "_cut_rank_format"
     all_model_pred_path = source_dir + data_name + "/bert/" + data_name + "_all_pred"

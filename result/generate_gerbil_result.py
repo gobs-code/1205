@@ -44,7 +44,7 @@ if __name__ == "__main__":
     generate_gerbil = GenerateGerbilResult()
 
     data_name = "aida_testA"
-    source_dir = "/data/fangzheng/bert_el/"
+    source_dir = "/data/xxx/bert_el/"
     final_result_v1_path = source_dir + data_name + "/bert/" + data_name + "_final_result_v1"
     gerbil_result_path = source_dir + data_name + "/bert/" + data_name + "_final_result_v1_gerbil"
 

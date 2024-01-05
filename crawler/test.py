@@ -189,6 +189,6 @@ if __name__ == "__main__":
 
     test = Test()
     data_type = "wiki_clueweb"
-    entity_name_path = "/root/fangzheng/data/page_id/" + data_type + "_filter_candidate_name"
-    page_id_path = "/root/fangzheng/data/page_id/" + data_type + "_filter_candidate_pageid"
+    entity_name_path = "/root/data/page_id/" + data_type + "_filter_candidate_name"
+    page_id_path = "/root/data/page_id/" + data_type + "_filter_candidate_pageid"
     test.start_page_id_run(entity_name_path, page_id_path)

@@ -432,7 +432,7 @@ class XgboostRank(object):
         print(importance)
 
     def controller_train(self):
-        source_dir = "/data/fangzheng/bert_el/"
+        source_dir = "/data/xxx/bert_el/"
         # train_path = source_dir + "aida_train/candidate/aida_train_rank_format"
         train_path = source_dir + "wiki_clueweb/other_candidate/wiki_clueweb_rank_format"
         dev_path = source_dir + "aida_testA/other_candidate/aida_testA_rank_format"
@@ -447,7 +447,7 @@ class XgboostRank(object):
         self.predict(cut_train_path, isFilter=False)
 
     def controller_test(self):
-        source_dir = "/data/fangzheng/bert_el/"
+        source_dir = "/data/xxx/bert_el/"
         data_name = "aida_testA"
         test_path = source_dir + data_name + "/other_candidate/" + data_name + "_rank_format"
         cut_test_path = source_dir + data_name + "/other_candidate/" + data_name + "_cut_rank_format"
@@ -463,7 +463,7 @@ class XgboostRank(object):
         # self.predict(cut_test_path, isFilter=False)
 
 if __name__ == "__main__":
-    source_dir = "/data/fangzheng/bert_el/"
+    source_dir = "/data/xxx/bert_el/"
     model_path = source_dir + "model/xgboost/aida_train_local"
 
     data_util = data_util.DataUtil()

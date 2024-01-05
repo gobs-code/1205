@@ -459,7 +459,7 @@ if __name__ == "__main__":
     el_fea = LocalFeature(is_load_embed=False)
 
     data_name = "ace2004"
-    source_dir = "/data/fangzheng/bert_el/"
+    source_dir = "/data/bert_el/"
 
     # candidate_path = source_dir + data_name + "/candidate/" + data_name + "_candidate_format"
     # rank_format_path = source_dir + data_name + "/candidate/" + data_name + "_rank_format"

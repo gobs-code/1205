@@ -410,10 +410,10 @@ class CandidateCrawler(object):
 
     def start_run(self):
         data_type = "ace2004"
-        source_path = "/root/fangzheng/data/source/" + data_type + "_in_wiki"
-        common_candidate_path = "/root/fangzheng/data/candidate/" + data_type + "_common_candidate"
-        keyword_candidate_path = "/root/fangzheng/data/candidate/" + data_type + "_keyword_candidate"
-        candidate_path = "/root/fangzheng/data/candidate/" + data_type + "_candidate"
+        source_path = "/root/data/source/" + data_type + "_in_wiki"
+        common_candidate_path = "/root/data/candidate/" + data_type + "_common_candidate"
+        keyword_candidate_path = "/root/data/candidate/" + data_type + "_keyword_candidate"
+        candidate_path = "/root/data/candidate/" + data_type + "_candidate"
 
         # candidate_crawl.start_common_run(source_path, common_candidate_path, data_type, 20)
         candidate_crawl.start_keyword_run(source_path, keyword_candidate_path, 10)

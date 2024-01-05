@@ -443,19 +443,19 @@ if __name__ == "__main__":
     # data_list = ["ace2004", "msnbc", "aquaint", "clueweb", "wiki", "aida_train", "aida_testA", "aida_testB"]
 
     data_type = "wiki_clueweb"
-    filter_candidate_path = "/root/fangzheng/data/filter_candidate/" + data_type + "_filter_candidate"
-    candidate_redirect_path = "/root/fangzheng/data/candidate_redirect/" + data_type + "_candidate_redirect"
-    wiki_entity_path = "/root/fangzheng/data/wiki/" + data_type + "_wiki"
+    filter_candidate_path = "/root/data/filter_candidate/" + data_type + "_filter_candidate"
+    candidate_redirect_path = "/root/data/candidate_redirect/" + data_type + "_candidate_redirect"
+    wiki_entity_path = "/root/data/wiki/" + data_type + "_wiki"
 
     crawler = WikiEntityCrawler()
     crawler.start_run(filter_candidate_path, candidate_redirect_path, wiki_entity_path)
 
-    # name_path = "/root/fangzheng/data/filter_candidate/" + data_type + "_filter_candidate_no_wiki"
-    # filter_candidate_redirect_path = "/root/fangzheng/data/candidate_redirect/" + data_type + "_candidate_redirect"
-    # wiki_entity_path = "/root/fangzheng/data/wiki/" + data_type + "_wiki"
+    # name_path = "/root/data/filter_candidate/" + data_type + "_filter_candidate_no_wiki"
+    # filter_candidate_redirect_path = "/root/data/candidate_redirect/" + data_type + "_candidate_redirect"
+    # wiki_entity_path = "/root/data/wiki/" + data_type + "_wiki"
     # crawler.start_name_run(name_path, filter_candidate_redirect_path, wiki_entity_path)
 
-    # golden_redirect_path = "/root/fangzheng/data/golden_redirect/" + data_type + "_golden_redirect"
-    # golden_wiki_path = "/root/fangzheng/data/golden_wiki/" + data_type + "_golden_wiki"
+    # golden_redirect_path = "/root/data/golden_redirect/" + data_type + "_golden_redirect"
+    # golden_wiki_path = "/root/data/golden_wiki/" + data_type + "_golden_wiki"
     # crawler.test_golden_run(golden_redirect_path, golden_wiki_path)
 
