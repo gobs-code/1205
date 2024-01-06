@@ -461,16 +461,6 @@ if __name__ == "__main__":
     data_name = "ace2004"
     source_dir = "/data/bert_el/"
 
-    # candidate_path = source_dir + data_name + "/candidate/" + data_name + "_candidate_format"
-    # rank_format_path = source_dir + data_name + "/candidate/" + data_name + "_rank_format"
-    # cut_rank_path = source_dir + data_name + "/candidate/" + data_name + "_cut_rank_format"
-
-    # 多进程
-    # el_fea.split_data(candidate_path, 10000)
-    # for i in range(34):
-    #     p = multiprocessing.Process(target=worker, args=(i, ""))
-    #     p.start()
-
     candidate_path = source_dir + data_name + "/candidate/" + data_name + "_candidate_format"
     rank_format_path = source_dir + data_name + "/candidate/" + data_name + "_rank_format"
     el_fea.build_rank_feature(candidate_path, rank_format_path)
