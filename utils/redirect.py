@@ -6,11 +6,11 @@ from lxml import etree
 from urllib import parse
 import shutil
 
-class RedirectCrawler(object):
+class Redirect(object):
     def __init__(self):
         pass
 
-    def crawl_redirect_page(self, target_url):
+    def redirect_page(self, target_url):
         """
         Get redirected pages of entity
         :param target_url:
@@ -22,7 +22,7 @@ class RedirectCrawler(object):
             response = requests.get(url=target_url)
             response.encoding = "utf-8"
             html = etree.HTML(response.text)
-            script_str = html.xpath("/html/body/script[@type='application/ld+json']/text()")[0]
+            script_str = html.xpath("/data/text()")[0]
 
             entity_json = json.loads(script_str)
 
@@ -31,13 +31,13 @@ class RedirectCrawler(object):
                 target_redirect_url = url.replace("\\", "")
 
         except:
-            print("crawl redirected error")
+            print("redirected error")
 
         # print(target_url, own_target_url)
 
         return target_redirect_url
 
-    def crawl_golden_redirect(self, golden_path, golden_redirect_path):
+    def golden_redirect(self, golden_path, golden_redirect_path):
         """
         Get redirected pages of gold entities
         :param golden_path:
@@ -53,11 +53,11 @@ class RedirectCrawler(object):
                     mention_obj = json.loads(item)
                     target_url = mention_obj["target_url"]
 
-                    target_redirect_url = self.crawl_redirect_page(target_url)
+                    target_redirect_url = self.redirect_page(target_url)
 
                     # disambiguation url
                     disam_url = target_url + "_(disambiguation)"
-                    target_disam_redirect_url = self.crawl_redirect_page(disam_url)
+                    target_disam_redirect_url = self.redirect_page(disam_url)
 
                     if target_redirect_url != "":
                         # this entity is a disambiguation entity
@@ -75,7 +75,7 @@ class RedirectCrawler(object):
 
         print(target_redirect_count)
 
-    def crawl_candidate_redirect(self, candidate_path, redirect_dict_path):
+    def candidate_redirect(self, candidate_path, redirect_dict_path):
         """
         crawl candidate entity redirect name
         :param candidate_path:
@@ -112,7 +112,7 @@ class RedirectCrawler(object):
         with open(redirect_dict_path, "w", encoding="utf-8") as redirect_dict_file:
             for name in name_set:
                 url = "https://en.wikipedia.org/wiki/" + parse.quote(name)
-                redirect_url = self.crawl_redirect_page(url)
+                redirect_url = self.redirect_page(url)
                 redirect_name = redirect_url.split("/")[-1].split("#")[0]
 
                 if redirect_name != "" and parse.unquote(name) != parse.unquote(redirect_name):
@@ -122,7 +122,7 @@ class RedirectCrawler(object):
         dump_path = redirect_dict_path + ".dump"
         shutil.copyfile(redirect_dict_path, dump_path)
 
-    def crawl_name_redirect(self, name_path, redirect_dict_path):
+    def name_redirect(self, name_path, redirect_dict_path):
         """
         crawl name redirect
         :param name_path:
@@ -138,28 +138,9 @@ class RedirectCrawler(object):
                         continue
 
                     url = "https://en.wikipedia.org/wiki/" + parse.quote(name)
-                    redirect_url = self.crawl_redirect_page(url)
+                    redirect_url = self.redirect_page(url)
                     redirect_name = redirect_url.split("/")[-1].split("#")[0]
 
                     if redirect_name != "" and parse.unquote(name) != parse.unquote(redirect_name):
                         redirect_dict_file.write(name + "\t" + redirect_name + "\n")
                         redirect_dict_file.flush()
-
-
-if __name__ == "__main__":
-    redirect_crawl = RedirectCrawler()
-
-    # data_list = ["ace2004", "msnbc", "aquaint", "clueweb", "wiki", "aida_train", "aida_testA", "aida_testB"]
-
-    data_type = "aida_train"
-    candidate_path = "/root/data/candidate/" + data_type + "_candidate"
-    candidate_redirect_path = "/root/data/golden_redirect/" + data_type + "_golden_redirect"
-    # redirect_crawl.crawl_golden_redirect(candidate_path, candidate_redirect_path)
-
-    filter_candidate_path = "/root/data/filter_candidate/" + data_type + "_filter_candidate"
-    filter_candidate_redirect_path = "/root/data/candidate_redirect/" + data_type + "_candidate_redirect"
-    redirect_crawl.crawl_candidate_redirect(filter_candidate_path, filter_candidate_redirect_path)
-
-    name_path = "/root/data/filter_candidate/" + data_type + "_filter_candidate_no_wiki"
-    filter_candidate_redirect_path = "/root/data/candidate_redirect/" + data_type + "_candidate_redirect"
-    # redirect_crawl.crawl_name_redirect(name_path, filter_candidate_redirect_path)

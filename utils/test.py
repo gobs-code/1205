@@ -1,7 +1,7 @@
 # encoding:utf-8
 
 import json
-import wiki_crawler
+import crawler.wiki as wiki
 from lxml import etree
 import urllib
 import urllib.request
@@ -122,13 +122,13 @@ class Test(object):
 
                     combine_file.write(mention + "\t" + json.dumps(mention_candidate, ensure_ascii=False) + "\n")
 
-    def crawl_other_candidate_pv(self, candidate_path):
+    def other_candidate_pv(self, candidate_path):
         """
 
         :param candidate_path:
         :return:
         """
-        crawler = wiki_crawler.WikiEntityCrawler("", "")
+        crawler = wiki.WikiEntityCrawler("", "")
 
         crawl_pv_path = candidate_path + "_crawl_pv"
         with open(candidate_path, "r", encoding="utf-8") as candidate_file:
@@ -184,11 +184,3 @@ class Test(object):
                     page_id = self.get_page_id(item)
                     page_id_file.write(item + "\t" + str(page_id) + "\n")
                     page_id_file.flush()
-
-if __name__ == "__main__":
-
-    test = Test()
-    data_type = "wiki_clueweb"
-    entity_name_path = "/root/data/page_id/" + data_type + "_filter_candidate_name"
-    page_id_path = "/root/data/page_id/" + data_type + "_filter_candidate_pageid"
-    test.start_page_id_run(entity_name_path, page_id_path)

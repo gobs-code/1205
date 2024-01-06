@@ -356,7 +356,6 @@ class WikiEntityCrawler:
 
     def start_golden_run(self, golden_redirect_path, golden_wiki_path):
         """
-        临时添加的方法，为了爬取golden实体的描述信息
         :param golden_redirect_path:
         :param golden_wiki_path:
         :return:
@@ -433,29 +432,4 @@ class WikiEntityCrawler:
                         wiki_file.write(entity_name + "\t" + json.dumps(entity_dict, ensure_ascii=False) + "\n")
                         wiki_file.flush()
                         crawled_entity_set.add(entity_name)
-
-
-if __name__ == "__main__":
-
-    # Before crawl wiki page, we should get the redirect url of the source url,
-    # the reason is that we crawl the raw text of entity, not the html page.
-
-    # data_list = ["ace2004", "msnbc", "aquaint", "clueweb", "wiki", "aida_train", "aida_testA", "aida_testB"]
-
-    data_type = "wiki_clueweb"
-    filter_candidate_path = "/root/data/filter_candidate/" + data_type + "_filter_candidate"
-    candidate_redirect_path = "/root/data/candidate_redirect/" + data_type + "_candidate_redirect"
-    wiki_entity_path = "/root/data/wiki/" + data_type + "_wiki"
-
-    crawler = WikiEntityCrawler()
-    crawler.start_run(filter_candidate_path, candidate_redirect_path, wiki_entity_path)
-
-    # name_path = "/root/data/filter_candidate/" + data_type + "_filter_candidate_no_wiki"
-    # filter_candidate_redirect_path = "/root/data/candidate_redirect/" + data_type + "_candidate_redirect"
-    # wiki_entity_path = "/root/data/wiki/" + data_type + "_wiki"
-    # crawler.start_name_run(name_path, filter_candidate_redirect_path, wiki_entity_path)
-
-    # golden_redirect_path = "/root/data/golden_redirect/" + data_type + "_golden_redirect"
-    # golden_wiki_path = "/root/data/golden_wiki/" + data_type + "_golden_wiki"
-    # crawler.test_golden_run(golden_redirect_path, golden_wiki_path)
 
