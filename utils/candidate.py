@@ -5,10 +5,10 @@ import json
 import os
 import requests
 from urllib import parse
-import config_util
-import data_util
+import utils.config as config
+import utils.data as data
 
-class CandidateCrawler(object):
+class Candidate(object):
     """
     Crawl candidate entity for each mention
     """
@@ -17,7 +17,7 @@ class CandidateCrawler(object):
 
         :param:
         """
-        self.data_util = data_util.DataUtil()
+        self.data_util = data.DataUtil()
 
     def get_complete_matching_page(self, mention_url):
         """
@@ -244,7 +244,7 @@ class CandidateCrawler(object):
 
                     use_google_number = 0
                     google_key_index = 0
-                    key_list = config_util.Google_Cloud_Platform_keys[::-1]
+                    key_list = config.Google_Cloud_Platform_keys[::-1]
                     google_key = key_list[google_key_index]
                     mention_candidate_dict = {}
                     if capitalize_mention_name not in mention_set:
@@ -265,9 +265,9 @@ class CandidateCrawler(object):
                         mention_candidate_dict["mention_search_page"] = self.get_search_page(mention_search_url)
 
                         # 5. if word number > 2, then use google search engine
-                        if len(capitalize_mention_name.split(" ")) > 2 and (data_type in config_util.Use_Goole_Data_Names):
+                        if len(capitalize_mention_name.split(" ")) > 2 and (data_type in config.Use_Goole_Data_Names):
                             # get google search result
-                            url_list = self.get_google_result(capitalize_mention_name, config_util.Google_Search_Engine_ID, google_key)
+                            url_list = self.get_google_result(capitalize_mention_name, config.Google_Search_Engine_ID, google_key)
                             mention_candidate_dict["google_search_result"] = [url.split("/")[-1] for url in url_list]
                             use_google_number += 1
 
@@ -283,7 +283,7 @@ class CandidateCrawler(object):
                         # 7. if candidate number equals 0, then use google search engine
                         candidate_num = sum([len(candidate_list) for key, candidate_list in mention_candidate_dict.items()])
                         if candidate_num == 0 and "google_search_result" not in mention_candidate_dict:
-                            url_list = self.get_google_result(capitalize_mention_name, config_util.Google_Search_Engine_ID, google_key)
+                            url_list = self.get_google_result(capitalize_mention_name, config.Google_Search_Engine_ID, google_key)
                             mention_candidate_dict["google_search_result"] = [url.split("/")[-1] for url in url_list]
 
                             use_google_number += 1
@@ -293,8 +293,8 @@ class CandidateCrawler(object):
 
                         if use_google_number > 0 and use_google_number % 100 == 0:
                             google_key_index += 1
-                            if google_key_index < len(config_util.Google_Cloud_Platform_keys):
-                                google_key = config_util.Google_Cloud_Platform_keys[google_key_index]
+                            if google_key_index < len(config.Google_Cloud_Platform_keys):
+                                google_key = config.Google_Cloud_Platform_keys[google_key_index]
 
                         mention_set.add(capitalize_mention_name)
                         common_candidate_file.write(
@@ -396,8 +396,8 @@ class CandidateCrawler(object):
                     or ("google_search_result" in candidate_obj and len(candidate_obj["google_search_result"]) == 0)) \
                         and len(mention.split(" ")) > 2:
                     # get google search result
-                    url_list = self.get_google_result(mention, config_util.Google_Search_Engine_ID,
-                                                      config_util.Google_Cloud_Platform_key3)
+                    url_list = self.get_google_result(mention, config.Google_Search_Engine_ID,
+                                                      config.Google_Cloud_Platform_key3)
                     candidate_obj["google_search_result"] = [url.split("/")[-1] for url in url_list]
 
                 mention_candidate_dict[mention] = candidate_obj
@@ -423,7 +423,7 @@ class CandidateCrawler(object):
         # candidate_crawl.combine_candidate(keyword_candidate_path, common_candidate_path, candidate_path)
 
 if __name__ == "__main__":
-    candidate_crawl = CandidateCrawler()
+    candidate_crawl = Candidate()
     candidate_crawl.start_run()
 
 

@@ -2,7 +2,7 @@
 
 import json
 from collections import Counter
-from data_util import DataUtil
+from model.data_process import DataUtil
 
 class GlobalFeature(object):
 

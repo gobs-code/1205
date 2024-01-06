@@ -1,7 +1,7 @@
 # encoding:utf-8
 
 import json
-import crawler.wiki as wiki
+import utils.wiki as wiki
 from lxml import etree
 import urllib
 import urllib.request

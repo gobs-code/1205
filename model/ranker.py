@@ -2,7 +2,7 @@
 
 import config_util
 import json
-from data_util import DataUtil
+from model.data_process import DataUtil
 
 class LocalRanker(object):
     """

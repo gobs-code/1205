@@ -3,12 +3,12 @@
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 import config_util
-import data_util
+import model.data_process as data_process
 import os
 import time
 import json
 import numpy as np
-from model_helper import ModelHelper
+from model.model_selector import ModelHelper
 import networkx as nx
 
 class Selector(object):
@@ -550,10 +550,10 @@ class SelectorProcess(object):
 if __name__ == "__main__":
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-    data_util = data_util.DataUtil()
-    model_helper = ModelHelper(data_util)
+    data_process = data_process.DataUtil()
+    model_helper = ModelHelper(data_process)
 
     combine_model = Selector()
-    model_process = SelectorProcess(data_util, combine_model, model_helper)
+    model_process = SelectorProcess(data_process, combine_model, model_helper)
 
     model_process.export_predict_result()
