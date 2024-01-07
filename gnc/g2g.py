@@ -491,7 +491,3 @@ def main():
     )
     epochs = 1
     trainer.run(loader, epochs)
-
-
-if __name__ == "__main__":
-    main()

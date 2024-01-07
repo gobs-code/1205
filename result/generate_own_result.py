@@ -182,7 +182,5 @@ if __name__ == "__main__":
     generate_result.combine_model_result(combine_model_result_path, xgboost_pred_path, all_model_pred_path)
     if data_name != "msnbc":
         generate_result.search_father_result(all_model_pred_path, final_result_v1_path)
-    # generate_result.search_keyword_candidate(final_result_v1_path, final_result_v2_path, entity_path)
 
     generate_result.cal_recall(final_result_v1_path)
-    # generate_result.cal_recall(final_result_v2_path)

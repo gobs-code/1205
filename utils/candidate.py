@@ -422,8 +422,4 @@ class Candidate(object):
         # candidate_crawl.update_google_candidate(common_candidate_path)
         # candidate_crawl.combine_candidate(keyword_candidate_path, common_candidate_path, candidate_path)
 
-if __name__ == "__main__":
-    candidate_crawl = Candidate()
-    candidate_crawl.start_run()
-
 

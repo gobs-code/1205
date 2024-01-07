@@ -506,6 +506,3 @@ class DataUtil(object):
                 yield mention_bert_array[start_id:end_id], candidate_bert_array[start_id:end_id], \
                       candidate_gat_array[start_id:end_id], candidate_fea_array[start_id:end_id], \
                       candidate_score_array[start_id:end_id], label_array[start_id:end_id]
-
-if __name__ == "__main__":
-    data_util = DataUtil()
